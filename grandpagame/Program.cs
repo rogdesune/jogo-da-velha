@@ -52,7 +52,7 @@ class Program
             }
             else
             {
-                jogadorAtual = (jogadorAtual == 'X') ? 'X' : 'O';
+                jogadorAtual = (jogadorAtual == 'X') ? 'O' : 'X';
             }
         }
     }
