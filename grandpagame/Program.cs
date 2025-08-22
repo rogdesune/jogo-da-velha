@@ -39,6 +39,21 @@ class Program
                 }
             }
             tabuleiro[linha, coluna] = jogadorAtual;
+
+            if (VerificarVitoria(tabuleiro, jogadorAtual))
+            {
+                Console.WriteLine($"\nParabéns, o jogador {jogadorAtual} ganhou!");
+                jogoAtivo = false;
+            }
+            else if (VerificarEmpate(tabuleiro))
+            {
+                Console.WriteLine("\nEmpate!\nNão houve vencedor.");
+                jogoAtivo = false;
+            }
+            else
+            {
+                jogadorAtual = (jogadorAtual == 'X') ? 'X' : 'O';
+            }
         }
     }
     static void IniciarTabuleiro(char[,] tabuleiro)
@@ -110,5 +125,19 @@ class Program
             return true;
         }
             return false;
+    }
+    static bool VerificarEmpate(char[,] tabuleiro)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (tabuleiro[i, j] == ' ')
+                {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 }
