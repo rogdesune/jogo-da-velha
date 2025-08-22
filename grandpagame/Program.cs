@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 class Program
 {
-    static void Main()
+    static async Task Main()
     {
         char[,] tabuleiro = new char[3, 3];
         IniciarTabuleiro(tabuleiro);
@@ -10,12 +11,14 @@ class Program
         char jogadorAtual = 'X';
         while (jogoAtivo)
         {
-            Console.WriteLine($"\nVez do jogador {jogadorAtual}");
+            
             int linha, coluna;
             while (true)
             {
                 MostrarTabuleiro(tabuleiro);
-                
+
+                Console.WriteLine($"\nVez do jogador >> {jogadorAtual} <<");
+
                 Console.WriteLine("\nDigite o número da linha: (0-2)");
                 int.TryParse(Console.ReadLine(), out linha);
                 Console.WriteLine("\nDigite o número da linha: (0-2)");
@@ -95,7 +98,7 @@ class Program
         // colunas
         for (int j = 0; j < 3; j++)
         {
-            if (tabuleiro[0, j] == jogadorAtivo && tabuleiro[1, j] == jogadorAtivo && tabuleiro[j, 2] == jogadorAtivo)
+            if (tabuleiro[0, j] == jogadorAtivo && tabuleiro[1, j] == jogadorAtivo && tabuleiro[2, j] == jogadorAtivo)
             {
                 return true;
             }
